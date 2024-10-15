@@ -45,3 +45,11 @@
 2. Log in to your preferred streaming service manually.
 
 3. BingeBot will automatically detect and click the "Next Episode" button when it appears.
+
+# ToDo:
+- Allow user to specify interval between button check ?
+- Read vid length and perform check that way ?
+- Change button content (look for something other than 'next episode')
+- Track episodes played, close down player after `x` episodes
+- package together, no need for install, can be downloaded as standalone
+- add taskbar item ?
