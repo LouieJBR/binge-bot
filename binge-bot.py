@@ -12,10 +12,33 @@ driver = webdriver.Chrome()
 # Open Netflix (you might need to login manually or automate it)
 driver.get("https://www.netflix.com")
 
+binge_bot = r"""
++------------------+
+|     Binge Bot    |
+|                  |
+|       .---.      |
+|      |     |     |
+|     /       \    |
+|    |   O O   |   |    
+|    |    -    |   |
+|     \_______/    |
+|      /     \     |
+|     |       |    |
+|     |_______|    |
+|                  |
+|   Next Episode   |
+|      Loading...  |
++------------------+
+"""
+print(binge_bot)
+
 # Wait for the user to manually log in or you can add a login automation if needed
 input("Please log in to Netflix and press Enter once you're on the episode page...")
-input("How many episodes would you like to binge tonight?")
+numEpisodes = int(input('How many episodes would you like to watch tonight? '))  # Convert input to int
 
+print(f'Awesome! BingeBot will continue running for {numEpisodes} episodes.')
+
+episodesWatched = 0
 # Function to detect and click the "Next Episode" button
 def click_next_episode():
     try:
@@ -24,12 +47,13 @@ def click_next_episode():
             EC.presence_of_element_located((By.XPATH, "//button[contains(text(), 'Next Episode')]"))
         )
         next_button.click()
+        episodesWatched += 1
         print("Next Episode button clicked!")
     except Exception as e:
         print("Next Episode button not found. Error: ", str(e))
 
 # Keep checking for the "Next Episode" button periodically (every few seconds)
-while True:
+while episodesWatched < numEpisodes:
     click_next_episode()
-    time.sleep(60)  # Check every minute
+    time.sleep(20)  # Check every minute
 
